@@ -1,0 +1,31 @@
+<div class="navbar  navbar-default">
+  <a class="navbar-brand" [routerLink]="['']">Shopping Site</a>
+  <ul class="nav navbar-nav">
+    <li>
+      <a [routerLink]="['']">My Store</a>
+    </li>
+  </ul>
+  <ul class="nav navbar-nav pull-right">
+    <li *ngIf="cart!=undefined && cart.totalItems>0">
+      <a [routerLink]="['/cart']">{{cart.totalItems}} Items | Rs. {{cart.total}} </a>
+    </li>
+
+    <li *ngIf="user.isAuth==true" style="padding-top:15px">
+      Welcome : {{user.fullName}}
+    </li>
+     <li *ngIf="user.isAuth==true">
+      <a href="javascript:void(0);" (click)="signout()">Logout</a>
+    </li>
+
+    <li *ngIf="user.isAuth==false">
+      <a [routerLink]="['/login']">Login</a>
+    </li>
+   <li *ngIf="user.isAuth==false">
+      <a [routerLink]="['/signup']">Signup</a>
+    </li>
+  </ul>
+</div>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

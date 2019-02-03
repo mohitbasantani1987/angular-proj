@@ -1,0 +1,35 @@
+<h2>User Login</h2>
+<hr>
+<form class="form-horizontal" #form="ngForm" [formGroup]="userForm" (ngSubmit)="login(userForm)" novalidate>
+  <div class="form-group">
+    <div class="col-sm-2">
+      <label>Username</label>
+    </div>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="userName" [formControl]="userForm.controls['userName']">
+      <div *ngIf="userForm.controls['userName'].errors && (userForm.controls['userName'].dirty || form.submitted)" class="text-danger">
+        <span [hidden]="!userForm.controls['userName'].hasError('required')">
+          please enter userName
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-2">
+      <label>Password</label>
+    </div>
+    <div class="col-sm-10">
+      <input type="password" name="password" class="form-control" [formControl]="userForm.controls['password']">
+      <div *ngIf="userForm.controls['password'].errors && (userForm.controls['password'].dirty || form.submitted)" class="text-danger">
+        <span [hidden]="!userForm.controls['password'].hasError('required')">
+          please enter password
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-10 col-sm-offset-2">
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+  </div>
+</form>
